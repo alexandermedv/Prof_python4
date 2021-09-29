@@ -40,7 +40,7 @@ def generator(path):
     with open('result.txt', 'r') as file:
         while True:
             line = file.readline()
-            print(hashlib.md5(line.encode('utf-8')).hexdigest())
+            yield hashlib.md5(line.encode('utf-8')).hexdigest()
             if not line:
                 break
 
@@ -60,3 +60,5 @@ if __name__ == '__main__':
 
     print('Создание md5 хэша каждой строки из файла:')
     gen = generator('result.txt')
+    for item in gen:
+        print(item)
